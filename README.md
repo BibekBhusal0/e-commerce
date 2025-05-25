@@ -21,19 +21,19 @@ This is a beautifully animated, responsive e-commerce UI template built with **H
 
 ## 📁 Folder Structure
 
-~~~bash
+```bash
 src/
 ├── components/
 ├── context/
 │   └── CartContext.tsx
 ├── data/
-│   └── data.ts      
+│   └── data.ts
 ├── pages/
 ├── types/
 ├── utils/
 ├── App.tsx
 └── main.tsx
-~~~
+```
 
 ## 📦 Installation
 
@@ -45,7 +45,6 @@ npm run dev
 ```
 
 ## 📸 Screenshots
-
 
 ## 🌐 Live Preview
 

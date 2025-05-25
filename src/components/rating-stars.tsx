@@ -14,11 +14,11 @@ export const RatingStars: React.FC<RatingStarsProps> = ({ rating, size = 16 }) =
     <div className="flex items-center">
       {[...Array(5)].map((_, i) => {
         if (i < fullStars) {
-          return <Icon key={i} icon="lucide:star" className="text-warning" width={size} />;
+          return <Icon key={i} icon="fluent:star-12-filled" className="text-warning" width={size} />;
         } else if (i === fullStars && hasHalfStar) {
-          return <Icon key={i} icon="lucide:star-half" className="text-warning" width={size} />;
+          return <Icon key={i} icon="fluent:star-half-12-regular" className="text-warning" width={size} />;
         } else {
-          return <Icon key={i} icon="lucide:star" className="text-default-300" width={size} />;
+          return <Icon key={i} icon="fluent:star-12-regular" className="text-default-300" width={size} />;
         }
       })}
     </div>

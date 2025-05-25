@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardFooter, Button, Chip } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { Product, ProductTag } from "../types";
+import { Product, } from "../types";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
+import { getTagColor } from "../utils/tag-styles";
 
 interface ProductCardProps {
   product: Product;
@@ -12,42 +13,6 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
-
-  const getTagColor = (tag: ProductTag) => {
-    switch (tag) {
-      case "new":
-        return {
-          color: "success",
-          gradient: "from-green-400 to-emerald-600",
-          icon: "lucide:sparkles",
-        };
-      case "hot":
-        return {
-          color: "danger",
-          gradient: "from-red-400 to-rose-600",
-          icon: "lucide:flame",
-        };
-      case "30% off":
-        return {
-          color: "warning",
-          gradient: "from-amber-400 to-orange-600",
-          icon: "lucide:tag",
-        };
-      case "most popular":
-        return {
-          color: "secondary",
-          gradient: "from-purple-400 to-violet-600",
-          icon: "lucide:trending-up",
-        };
-      default:
-        return {
-          color: "default",
-          gradient: "from-blue-400 to-indigo-600",
-          icon: "",
-        };
-    }
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -91,7 +56,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               size="sm"
               color="primary"
               variant="flat"
-              onPress={() => {                addToCart(product.id);              }}
+              onPress={() => { addToCart(product.id); }}
               startContent={<Icon icon="lucide:shopping-cart" width={16} />}
             >
               Add

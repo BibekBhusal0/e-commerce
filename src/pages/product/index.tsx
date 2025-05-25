@@ -1,16 +1,16 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button, Divider, Chip, Accordion, AccordionItem } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useCart } from "../../context/CartContext";
 import { products } from "../../data/mock-data";
-import { ProductTag } from "../../types";
 import { RatingStars } from "../../components/rating-stars";
 import { ProductCategorySection } from "../../components/product-category-section";
 import { motion } from "framer-motion";
 import { Avatar } from "@heroui/react";
+import { getTagColor } from "../../utils/tag-styles";
 
-export const ProductPage= () => {
+export const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -19,41 +19,6 @@ export const ProductPage= () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const getTagColor = (tag: ProductTag) => {
-    switch (tag) {
-      case "new":
-        return {
-          color: "success",
-          gradient: "from-green-400 to-emerald-600",
-          icon: "lucide:sparkles",
-        };
-      case "hot":
-        return {
-          color: "danger",
-          gradient: "from-red-400 to-rose-600",
-          icon: "lucide:flame",
-        };
-      case "30% off":
-        return {
-          color: "warning",
-          gradient: "from-amber-400 to-orange-600",
-          icon: "lucide:tag",
-        };
-      case "most popular":
-        return {
-          color: "secondary",
-          gradient: "from-purple-400 to-violet-600",
-          icon: "lucide:trending-up",
-        };
-      default:
-        return {
-          color: "default",
-          gradient: "from-blue-400 to-indigo-600",
-          icon: "",
-        };
-    }
-  };
 
   if (!product) {
     return (

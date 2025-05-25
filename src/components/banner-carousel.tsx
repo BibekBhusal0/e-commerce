@@ -19,13 +19,13 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + banners.length) % banners.length);
   };
   
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     nextSlide();
+  //   }, 5000);
+  //   
+  //   return () => clearInterval(interval);
+  // }, []);
   
   return (
     <div className="relative w-full h-[350px] sm:h-[450px] overflow-hidden rounded-lg">

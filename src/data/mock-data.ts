@@ -10,10 +10,10 @@ export const navItems: NavItem[] = [
 
 export const banners: Banner[] = [
   {
-    id: "1",
-    image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner1",
-    title: "Summer Collection 2024",
-    description: "Get up to 50% off on our new summer collection. Explore the latest trends in fashion with breathable fabrics perfect for the season. Limited time offer!",
+    id: "3",
+    image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner9",
+    title: "Limited Time Offer",
+    description: "Buy one get one free on selected items. This weekend only! Shop our curated collection of seasonal must-haves before they're gone.",
   },
   {
     id: "2",
@@ -22,10 +22,10 @@ export const banners: Banner[] = [
     description: "Be the first to discover our latest products. Premium quality items that combine style and comfort. Free shipping on orders over $50!",
   },
   {
-    id: "3",
-    image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner3",
-    title: "Limited Time Offer",
-    description: "Buy one get one free on selected items. This weekend only! Shop our curated collection of seasonal must-haves before they're gone.",
+    id: "1",
+    image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner6",
+    title: "Summer Collection 2025",
+    description: "Get up to 50% off on our new summer collection. Explore the latest trends in fashion with breathable fabrics perfect for the season. Limited time offer!",
   },
   {
     id: "4",
@@ -33,22 +33,16 @@ export const banners: Banner[] = [
     title: "Premium Accessories",
     description: "Complete your look with our handcrafted accessories. Designed for style and durability. Use code EXTRA10 for an additional 10% off!",
   },
-  {
-    id: "5",
-    image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner5",
-    title: "Sustainable Collection",
-    description: "Eco-friendly fashion that doesn't compromise on style. Made from recycled materials and ethically sourced fabrics. Join us in making a difference.",
-  },
 ];
 
 export const products: Product[] = [
   {
     id: "1",
-    title: "Premium Leather Jacket",
+    title: "Premium Leather Hand Bag",
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product1",
     price: 199.99,
-    category: "clothing",
-    tags: ["new", "hot"],
+    category: "accessories",
+    tags: ["new", ],
     rating: 4.5,
     reviews: [
       {
@@ -69,8 +63,8 @@ export const products: Product[] = [
   },
   {
     id: "2",
-    title: "Wireless Headphones",
-    image: "https://img.heroui.chat/image/ai?w=400&h=500&u=product2",
+    title: "Rodotic Hands",
+    image: "https://img.heroui.chat/image/ai?w=400&h=500&u=product10",
     price: 89.99,
     category: "electronics",
     tags: ["30% off", "most popular"],
@@ -94,7 +88,7 @@ export const products: Product[] = [
   },
   {
     id: "3",
-    title: "Smart Watch",
+    title: "Robot Toy",
     image: "https://img.heroui.chat/image/ai?w=400&h=500&u=product3",
     price: 149.99,
     category: "electronics",
@@ -130,10 +124,10 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    title: "Casual T-Shirt",
+    title: "Sunglasses",
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product5",
     price: 24.99,
-    category: "clothing",
+    category: "accessories",
     tags: ["30% off"],
     rating: 4.0,
     reviews: [
@@ -148,7 +142,7 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    title: "Laptop Backpack",
+    title: "Wallet",
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product6",
     price: 59.99,
     category: "accessories",
@@ -158,27 +152,9 @@ export const products: Product[] = [
       {
         id: "r8",
         name: "Lisa Brown",
-        text: "Spacious and well-designed. Has plenty of compartments and the padding protects my laptop well.",
+        text: "Spacious and well-designed. Has plenty of compartments and the padding protects.",
         rating: 5,
         profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user8"
-      },
-    ],
-  },
-  {
-    id: "7",
-    title: "Wireless Mouse",
-    image: "https://img.heroui.chat/image/ai?w=400&h=500&u=product7",
-    price: 29.99,
-    category: "electronics",
-    tags: ["hot", "30% off"],
-    rating: 4.3,
-    reviews: [
-      {
-        id: "r9",
-        name: "David Miller",
-        text: "Responsive and comfortable to use. Battery life is excellent and the wireless connection is stable.",
-        rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user9"
       },
     ],
   },
@@ -198,6 +174,141 @@ export const products: Product[] = [
         rating: 4,
         profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
       },
+    ],
+  },
+  {
+    id: "9",
+    title: "Cloth Hanger",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product9",
+    price: 49.99,
+    category: "accessories",
+    tags: ["new"],
+    rating: 4.1,
+    reviews: [
+      {
+        id: "r11",
+        name: "Olivia Taylor",
+        text: "Really good look",
+        rating: 4,
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
+      },
+    ],
+  },
+  {
+    id: "10",
+    title: "Ladis shoes",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product10",
+    price: 49.99,
+    category: "footwear",
+    tags: ["new"],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "11",
+    title: "Perfume",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product11",
+    price: 49.99,
+    category: "accessories",
+    tags: ["new"],
+    rating: 4.1,
+    reviews: [
+      {
+        id: "r10",
+        name: "Olivia Taylor",
+        text: "Stylish design and good UV protection. The case that comes with it is sturdy too.",
+        rating: 4,
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
+      },
+    ],
+  },
+  {
+    id: "12",
+    title: "Jacket",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product12",
+    price: 999.99,
+    category: "Clothing",
+    tags: ["hot"],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "13",
+    title: "Cowboy hat",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product13",
+    price: 4.99,
+    category: "Clothing",
+    tags: [],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "14",
+    title: "Diamond Neckless",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product14",
+    price: 499.99,
+    category: "accessories",
+    tags: ['30% off'],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "15",
+    title: "Leather bag",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product15",
+    price: 499.99,
+    category: "accessories",
+    tags: ['30% off'],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "16",
+    title: "Sun glass",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product16",
+    price: 499.99,
+    category: "accessories",
+    tags: ['30% off'],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "17",
+    title: "School shoes",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product17",
+    price: 499.99,
+    category: "footwear",
+    tags: ['30% off'],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "18",
+    title: "Perfume",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product18",
+    price: 499.99,
+    category: "accessories",
+    tags: [],
+    rating: 4.1,
+    reviews: [
+    ],
+  },
+  {
+    id: "19",
+    title: "Lipsticks",
+    image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product19",
+    price: 49.99,
+    category: "accessories",
+    tags: ['30% off'],
+    rating: 4.1,
+    reviews: [
     ],
   },
 ];

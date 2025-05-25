@@ -1,9 +1,8 @@
-import React from "react";
 import { BannerCarousel } from "../../components/banner-carousel";
 import { ProductCategorySection } from "../../components/product-category-section";
 import { banners, products, categories } from "../../data/mock-data";
 
-export const HomePage: React.FC = () => {
+export const HomePage = () => {
   // Group products by category
   const productsByCategory = categories.reduce<Record<string, typeof products>>((acc, category) => {
     acc[category] = products.filter((product) => product.category === category);

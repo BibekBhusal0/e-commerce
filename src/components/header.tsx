@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Navbar,
@@ -17,11 +16,7 @@ import { Icon } from "@iconify/react";
 import { useCart } from "../context/CartContext";
 import { navItems, categories } from "../data/mock-data";
 
-interface HeaderProps {
-  // Remove onSidebarToggle prop
-}
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header = () => {
   const location = useLocation();
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
@@ -43,7 +38,7 @@ export const Header: React.FC<HeaderProps> = () => {
             >
               Navigation
             </DropdownItem>
-            {navItems.map((item) => (
+            <>{navItems.map((item) => (
               <DropdownItem key={item.name} textValue={item.name}>
                 <Link
                   to={item.href}
@@ -52,7 +47,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   {item.name}
                 </Link>
               </DropdownItem>
-            ))}
+            ))}</>
             <DropdownItem
               key="categories-header"
               className="text-sm font-medium text-foreground-500"
@@ -60,13 +55,13 @@ export const Header: React.FC<HeaderProps> = () => {
             >
               Categories
             </DropdownItem>
-            {categories.map((category) => (
+            <>{categories.map((category) => (
               <DropdownItem key={category} textValue={category}>
                 <Link to={`/category/${category}`} className="w-full text-foreground">
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </Link>
               </DropdownItem>
-            ))}
+            ))}</>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>

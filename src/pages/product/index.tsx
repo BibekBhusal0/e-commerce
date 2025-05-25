@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button, Divider, Chip, Accordion, AccordionItem } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -10,10 +10,10 @@ import { ProductCategorySection } from "../../components/product-category-sectio
 import { motion } from "framer-motion";
 import { Avatar } from "@heroui/react";
 
-export const ProductPage: React.FC = () => {
+export const ProductPage= () => {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = React.useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   const product = products.find((p) => p.id === id);
 

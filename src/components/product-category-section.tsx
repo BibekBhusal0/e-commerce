@@ -16,6 +16,17 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
 }) => {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const [showScrollButtons, setShowScrollButtons] = React.useState(false);
+  const [scrollLeftDisabled, setScrollLeftDisabled] = React.useState(true);
+  const [scrollRightDisabled, setScrollRightDisabled] = React.useState(true);
+
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setScrollLeftDisabled(scrollLeft === 0);
+      setScrollRightDisabled(scrollLeft + clientWidth === scrollWidth);
+    }
+  };
+
 
   React.useEffect(() => {
     const checkScrollable = () => {
@@ -25,12 +36,9 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
           scrollContainerRef.current.clientWidth
         );
       }
+      checkScrollPosition();
     };
-
-    // Check on initial mount
     checkScrollable();
-
-    // Check when the window resizes
     window.addEventListener("resize", checkScrollable);
 
     return () => {
@@ -41,12 +49,14 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      setTimeout(checkScrollPosition, 100); 
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      setTimeout(checkScrollPosition, 100); 
     }
   };
 
@@ -63,6 +73,7 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
                 variant="flat"
                 onPress={scrollLeft}
                 aria-label="Scroll left"
+                isDisabled={scrollLeftDisabled}
               >
                 <Icon icon="lucide:chevron-left" width={18} />
               </Button>
@@ -72,6 +83,7 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
                 variant="flat"
                 onPress={scrollRight}
                 aria-label="Scroll right"
+                isDisabled={scrollRightDisabled}
               >
                 <Icon icon="lucide:chevron-right" width={18} />
               </Button>

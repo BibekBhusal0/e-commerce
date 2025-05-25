@@ -16,9 +16,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <BrowserRouter>
       <HeroUIProvider navigate={navigate} useHref={useHref}>
-        <CartProvider>
-          {children}
-        </CartProvider>
+        <CartProvider>{children}</CartProvider>
       </HeroUIProvider>
       <ToastProvider />
     </BrowserRouter>

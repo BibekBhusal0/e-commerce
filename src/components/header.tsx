@@ -39,16 +39,18 @@ export const Header = () => {
             >
               Navigation
             </DropdownItem>
-            <>{navItems.map((item) => (
-              <DropdownItem key={item.name} textValue={item.name}>
-                <Link
-                  href={item.href}
-                  className={`w-full ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
-                >
-                  {item.name}
-                </Link>
-              </DropdownItem>
-            ))}</>
+            <>
+              {navItems.map((item) => (
+                <DropdownItem key={item.name} textValue={item.name}>
+                  <Link
+                    href={item.href}
+                    className={`w-full ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
+                  >
+                    {item.name}
+                  </Link>
+                </DropdownItem>
+              ))}
+            </>
             <DropdownItem
               key="categories-header"
               className="text-sm font-medium text-foreground-500"
@@ -56,20 +58,24 @@ export const Header = () => {
             >
               Categories
             </DropdownItem>
-            <>{categories.map((category) => (
-              <DropdownItem key={category} textValue={category}>
-                <Link href='#' className="w-full text-foreground">
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </Link>
-              </DropdownItem>
-            ))}</>
+            <>
+              {categories.map((category) => (
+                <DropdownItem key={category} textValue={category}>
+                  <Link href="#" className="w-full text-foreground">
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </Link>
+                </DropdownItem>
+              ))}
+            </>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
 
-      <NavbarBrand >
-        <Link href='/' className="flex gap-2"><Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
-          <p className="font-bold text-inherit">ShopEase</p></Link>
+      <NavbarBrand>
+        <Link href="/" className="flex gap-2">
+          <Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
+          <p className="font-bold text-inherit">ShopEase</p>
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
@@ -97,7 +103,7 @@ export const Header = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href='#' className="w-full text-foreground">
+                  <Link href="#" className="w-full text-foreground">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>

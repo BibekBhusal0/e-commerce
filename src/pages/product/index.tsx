@@ -9,7 +9,7 @@ import { ProductCategorySection } from "../../components/product-category-sectio
 import { motion } from "framer-motion";
 import { Avatar } from "@heroui/react";
 import { getTagColor } from "../../utils/tag-styles";
-import NumberFlow from '@number-flow/react'
+import NumberFlow from "@number-flow/react";
 
 export const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -130,9 +130,7 @@ export const ProductPage = () => {
               >
                 <Icon icon="lucide:minus" width={16} />
               </Button>
-              <NumberFlow className = 'px-2' value ={quantity}
-                spinTiming={{ duration: 100, }}
-              />
+              <NumberFlow className="px-2" value={quantity} spinTiming={{ duration: 100 }} />
               <Button
                 isIconOnly
                 variant="flat"
@@ -224,4 +222,3 @@ export const ProductPage = () => {
     </div>
   );
 };
-

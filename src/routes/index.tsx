@@ -14,4 +14,3 @@ export const Routes: React.FC = () => {
     </ReactDomRoutes>
   );
 };
-

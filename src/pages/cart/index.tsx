@@ -4,7 +4,7 @@ import { Button, Card, CardBody, CardFooter, Divider, Input } from "@heroui/reac
 import { Icon } from "@iconify/react";
 import { useCart } from "../../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
-import NumberFlow from '@number-flow/react'
+import NumberFlow from "@number-flow/react";
 
 export const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal, getProduct } =
@@ -49,7 +49,7 @@ export const CartPage: React.FC = () => {
           transition={{ duration: 0.3 }}
         >
           <div className="flex flex-col gap-5">
-            <AnimatePresence mode='sync' >
+            <AnimatePresence mode="sync">
               {cartItems.map((item) => {
                 const product = getProduct(item.productId);
                 if (!product) return null;
@@ -97,8 +97,10 @@ export const CartPage: React.FC = () => {
                               <Icon icon="lucide:minus" width={16} />
                             </Button>
                             <NumberFlow
-                              spinTiming={{ duration: 100, }}
-                              className='px-2' value={item.quantity} />
+                              spinTiming={{ duration: 100 }}
+                              className="px-2"
+                              value={item.quantity}
+                            />
                             <Button
                               isIconOnly
                               variant="flat"
@@ -135,15 +137,16 @@ export const CartPage: React.FC = () => {
                 </Button>
 
                 <Link to="/">
-                  <Button variant="light" startContent={<Icon icon="lucide:arrow-left" width={16} />}>
+                  <Button
+                    variant="light"
+                    startContent={<Icon icon="lucide:arrow-left" width={16} />}
+                  >
                     Continue Shopping
                   </Button>
                 </Link>
               </motion.div>
             </AnimatePresence>
-
           </div>
-
         </motion.div>
 
         {/* Order Summary */}
@@ -160,36 +163,33 @@ export const CartPage: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-default-600">Subtotal</span>
-                  <NumberFlow
-                    value={subtotal}
-                    format={{ style: 'currency', currency: 'USD', }}
-                  />
+                  <NumberFlow value={subtotal} format={{ style: "currency", currency: "USD" }} />
                 </div>
 
                 <div className="flex justify-between">
                   <span className="text-default-600">Shipping</span>
-                  <span>{shipping === 0 ? "Free" : <NumberFlow
-                    value={shipping}
-                    format={{ style: 'currency', currency: 'USD', }}
-                  />}</span>
+                  <span>
+                    {shipping === 0 ? (
+                      "Free"
+                    ) : (
+                      <NumberFlow
+                        value={shipping}
+                        format={{ style: "currency", currency: "USD" }}
+                      />
+                    )}
+                  </span>
                 </div>
 
                 <div className="flex justify-between">
                   <span className="text-default-600">Tax</span>
-                  <NumberFlow
-                    value={tax}
-                    format={{ style: 'currency', currency: 'USD', }}
-                  />
+                  <NumberFlow value={tax} format={{ style: "currency", currency: "USD" }} />
                 </div>
 
                 <Divider />
 
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
-                  <NumberFlow
-                    value={total}
-                    format={{ style: 'currency', currency: 'USD', }}
-                  />
+                  <NumberFlow value={total} format={{ style: "currency", currency: "USD" }} />
                 </div>
               </div>
 
@@ -236,4 +236,3 @@ export const CartPage: React.FC = () => {
     </div>
   );
 };
-

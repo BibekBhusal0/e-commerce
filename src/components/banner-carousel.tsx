@@ -30,7 +30,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const x_movement = 300
+  const x_movement = 300;
   const variants = {
     enter: (direction: number) => {
       return {
@@ -56,7 +56,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
   };
 
   return (
-    <div className="relative group h-[350px] w-full overflow-hidden rounded-lg sm:h-[450px]">
+    <div className="group relative h-[350px] w-full overflow-hidden rounded-lg sm:h-[450px]">
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
           key={currentIndex}
@@ -76,8 +76,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
             style={{ backgroundImage: `url(${banners[currentIndex].image})` }}
           >
             <div className="absolute inset-0 flex flex-col justify-center bg-gradient-to-r from-black/70 to-transparent px-6 sm:px-12">
-              <div
-              >
+              <div>
                 <span className="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-xs text-white">
                   Limited Offer
                 </span>
@@ -108,7 +107,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       <Button
         isIconOnly
         variant="flat"
-        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 hidden group-hover:flex"
+        className="absolute left-2 top-1/2 z-20 hidden -translate-y-1/2 group-hover:flex"
         onPress={prevSlide}
         aria-label="Previous slide"
       >
@@ -118,7 +117,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       <Button
         isIconOnly
         variant="flat"
-        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 hidden group-hover:flex"
+        className="absolute right-2 top-1/2 z-20 hidden -translate-y-1/2 group-hover:flex"
         onPress={nextSlide}
         aria-label="Next slide"
       >
@@ -129,10 +128,10 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
         {banners.map((_, index) => (
           <button
             key={index}
-            className={cn("h-2 w-2 rounded-full transition-all",
+            className={cn(
+              "h-2 w-2 rounded-full transition-all",
               index === currentIndex ? "w-4 bg-primary" : "bg-white/50"
-            )
-            }
+            )}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -141,4 +140,3 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     </div>
   );
 };
-

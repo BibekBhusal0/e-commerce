@@ -27,13 +27,11 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     }
   };
 
-
   React.useEffect(() => {
     const checkScrollable = () => {
       if (scrollContainerRef.current) {
         setShowScrollButtons(
-          scrollContainerRef.current.scrollWidth >
-          scrollContainerRef.current.clientWidth
+          scrollContainerRef.current.scrollWidth > scrollContainerRef.current.clientWidth
         );
       }
       checkScrollPosition();
@@ -49,14 +47,14 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-      setTimeout(checkScrollPosition, 100); 
+      setTimeout(checkScrollPosition, 100);
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      setTimeout(checkScrollPosition, 100); 
+      setTimeout(checkScrollPosition, 100);
     }
   };
 
@@ -89,14 +87,14 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
               </Button>
             </div>
           )}
-            <Button
-              size="sm"
-              variant="light"
-              color="primary"
-              endContent={<Icon icon="lucide:arrow-right" width={16} />}
-            >
-              View All
-            </Button>
+          <Button
+            size="sm"
+            variant="light"
+            color="primary"
+            endContent={<Icon icon="lucide:arrow-right" width={16} />}
+          >
+            View All
+          </Button>
         </div>
       </div>
 
@@ -114,4 +112,3 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     </div>
   );
 };
-

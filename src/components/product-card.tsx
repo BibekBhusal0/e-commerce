@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardFooter, Button, Chip } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { Product, } from "../types";
+import { Product } from "../types";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
 import { getTagColor } from "../utils/tag-styles";
@@ -15,12 +15,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   return (
     <motion.div
-      className = 'relative'
+      className="relative"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="size-full" >
+      <Card className="size-full">
         <Link to={`/product/${product.id}`} className="flex h-full flex-col">
           <div className="relative">
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
@@ -59,8 +59,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         size="sm"
         color="primary"
         variant="flat"
-        className = 'absolute bottom-2 right-2'
-        onPress={() => { addToCart(product.id); }}
+        className="absolute bottom-2 right-2"
+        onPress={() => {
+          addToCart(product.id);
+        }}
         startContent={<Icon icon="lucide:shopping-cart" width={16} />}
       >
         Add

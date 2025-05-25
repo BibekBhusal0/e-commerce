@@ -33,10 +33,8 @@ const default_tag: TagStyle = {
   color: "default",
   gradient: "from-blue-400 to-indigo-600",
   icon: "",
-}
+};
 
 export const getTagColor = (tag: ProductTag): TagStyle => {
-  return tagStyles[tag] || default_tag
-}
-
-
+  return tagStyles[tag] || default_tag;
+};

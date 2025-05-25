@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@heroui/react";
+import { Button, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { Banner } from "../types";
 import { motion } from "framer-motion";
@@ -19,16 +19,16 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + banners.length) % banners.length);
   };
 
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     nextSlide();
-  //   }, 5000);
-  //
-  //   return () => clearInterval(interval);
-  // }, []);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="relative h-[350px] w-full overflow-hidden rounded-lg sm:h-[450px]">
+    <div className="relative group h-[350px] w-full overflow-hidden rounded-lg sm:h-[450px]">
       {banners.map((banner, index) => (
         <motion.div
           key={banner.id}
@@ -78,7 +78,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       <Button
         isIconOnly
         variant="flat"
-        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 bg-white/30 backdrop-blur-md hover:bg-white/50"
+        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 hidden group-hover:flex"
         onPress={prevSlide}
         aria-label="Previous slide"
       >
@@ -88,7 +88,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       <Button
         isIconOnly
         variant="flat"
-        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 bg-white/30 backdrop-blur-md hover:bg-white/50"
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 hidden group-hover:flex"
         onPress={nextSlide}
         aria-label="Next slide"
       >
@@ -99,9 +99,10 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
         {banners.map((_, index) => (
           <button
             key={index}
-            className={`h-2 w-2 rounded-full transition-all ${
+            className={cn("h-2 w-2 rounded-full transition-all" ,
               index === currentIndex ? "w-4 bg-primary" : "bg-white/50"
-            }`}
+            )
+            }
             onClick={() => setCurrentIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
           />

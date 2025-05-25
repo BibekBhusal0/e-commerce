@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { ProductCard } from "./product-card";
@@ -14,9 +13,30 @@ interface ProductCategorySectionProps {
 export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
   title,
   products,
-  category,
 }) => {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const [showScrollButtons, setShowScrollButtons] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkScrollable = () => {
+      if (scrollContainerRef.current) {
+        setShowScrollButtons(
+          scrollContainerRef.current.scrollWidth >
+          scrollContainerRef.current.clientWidth
+        );
+      }
+    };
+
+    // Check on initial mount
+    checkScrollable();
+
+    // Check when the window resizes
+    window.addEventListener("resize", checkScrollable);
+
+    return () => {
+      window.removeEventListener("resize", checkScrollable);
+    };
+  }, []);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -35,27 +55,28 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-semibold">{title}</h2>
         <div className="flex items-center gap-2">
-          <div className="hidden gap-2 sm:flex">
-            <Button
-              isIconOnly
-              size="sm"
-              variant="flat"
-              onPress={scrollLeft}
-              aria-label="Scroll left"
-            >
-              <Icon icon="lucide:chevron-left" width={18} />
-            </Button>
-            <Button
-              isIconOnly
-              size="sm"
-              variant="flat"
-              onPress={scrollRight}
-              aria-label="Scroll right"
-            >
-              <Icon icon="lucide:chevron-right" width={18} />
-            </Button>
-          </div>
-          <Link to={`/category/${category}`}>
+          {showScrollButtons && (
+            <div className="hidden gap-2 sm:flex">
+              <Button
+                isIconOnly
+                size="sm"
+                variant="flat"
+                onPress={scrollLeft}
+                aria-label="Scroll left"
+              >
+                <Icon icon="lucide:chevron-left" width={18} />
+              </Button>
+              <Button
+                isIconOnly
+                size="sm"
+                variant="flat"
+                onPress={scrollRight}
+                aria-label="Scroll right"
+              >
+                <Icon icon="lucide:chevron-right" width={18} />
+              </Button>
+            </div>
+          )}
             <Button
               size="sm"
               variant="light"
@@ -64,7 +85,6 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
             >
               View All
             </Button>
-          </Link>
         </div>
       </div>
 
@@ -82,3 +102,4 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     </div>
   );
 };
+

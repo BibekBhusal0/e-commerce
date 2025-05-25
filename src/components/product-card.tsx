@@ -91,10 +91,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               size="sm"
               color="primary"
               variant="flat"
-              onPress={(e) => {
-                e.preventDefault();
-                addToCart(product.id);
-              }}
+              onPress={() => {                addToCart(product.id);              }}
               startContent={<Icon icon="lucide:shopping-cart" width={16} />}
             >
               Add

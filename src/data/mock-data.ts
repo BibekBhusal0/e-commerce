@@ -2,10 +2,10 @@ import { Banner, Product, NavItem } from "../types";
 
 export const navItems: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
-  { name: "Categories", href: "/categories" },
-  { name: "Deals", href: "/deals" },
-  { name: "Contact", href: "/contact" },
+  { name: "Products", href: "#" },
+  { name: "Categories", href: "#" },
+  { name: "Deals", href: "#" },
+  { name: "Contact", href:"#" },
 ];
 
 export const banners: Banner[] = [

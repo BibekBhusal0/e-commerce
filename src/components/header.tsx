@@ -67,9 +67,9 @@ export const Header = () => {
         </Dropdown>
       </NavbarContent>
 
-      <NavbarBrand className="flex gap-2">
-        <Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
-        <p className="font-bold text-inherit">ShopEase</p>
+      <NavbarBrand >
+        <Link href='/' className="flex gap-2"><Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
+          <p className="font-bold text-inherit">ShopEase</p></Link>
       </NavbarBrand>
 
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">

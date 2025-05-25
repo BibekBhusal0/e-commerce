@@ -25,8 +25,22 @@ export const CartContext = React.createContext<CartContextType>({
   getProduct: () => undefined,
 });
 
+const getInitialCartItems = () => {
+  try {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  } catch (error) {
+    console.error("Error parsing cart items from localStorage:", error);
+    return [];
+  }
+};
+
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = React.useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = React.useState<CartItem[]>(getInitialCartItems());
+
+  React.useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (productId: string) => {
     setCartItems((prevItems) => {
@@ -104,3 +118,4 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const useCart = () => React.useContext(CartContext);
+

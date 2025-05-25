@@ -2,7 +2,7 @@ import React from "react";
 import { Button, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { Banner } from "../types";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, wrap } from "framer-motion";
 
 interface BannerCarouselProps {
   banners: Banner[];
@@ -10,13 +10,16 @@ interface BannerCarouselProps {
 
 export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [direction, setDirection] = React.useState<1 | -1>(1);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+    setDirection(1);
+    setCurrentIndex((prevIndex) => wrap(0, banners.length, prevIndex + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + banners.length) % banners.length);
+    setDirection(-1);
+    setCurrentIndex((prevIndex) => wrap(0, banners.length, prevIndex - 1));
   };
 
   React.useEffect(() => {
@@ -27,35 +30,62 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const x_movement = 300
+  const variants = {
+    enter: (direction: number) => {
+      return {
+        x: direction > 0 ? x_movement : -x_movement,
+        filter: "blur(2px)",
+        opacity: 0,
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      filter: "blur(0px)",
+      opacity: 1,
+    },
+    exit: (direction: number) => {
+      return {
+        zIndex: 0,
+        x: direction < 0 ? x_movement : -x_movement,
+        filter: "blur(2px)",
+        opacity: 0,
+      };
+    },
+  };
+
   return (
     <div className="relative group h-[350px] w-full overflow-hidden rounded-lg sm:h-[450px]">
-      {banners.map((banner, index) => (
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
-          key={banner.id}
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: index === currentIndex ? 1 : 0,
-            zIndex: index === currentIndex ? 10 : 0,
+          key={currentIndex}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 20 },
+            opacity: { duration: 0.2 },
           }}
-          transition={{ duration: 0.5 }}
+          className="absolute inset-0"
         >
           <div
             className="relative h-full w-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${banner.image})` }}
+            style={{ backgroundImage: `url(${banners[currentIndex].image})` }}
           >
             <div className="absolute inset-0 flex flex-col justify-center bg-gradient-to-r from-black/70 to-transparent px-6 sm:px-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: index === currentIndex ? 1 : 0, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+              <div
               >
                 <span className="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-xs text-white">
                   Limited Offer
                 </span>
-                <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">{banner.title}</h2>
+                <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">
+                  {banners[currentIndex].title}
+                </h2>
                 <p className="mb-6 max-w-md text-sm text-white/90 sm:text-base">
-                  {banner.description}
+                  {banners[currentIndex].description}
                 </p>
                 <div className="flex gap-3">
                   <Button
@@ -69,11 +99,11 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
                     Learn More
                   </Button>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>
-      ))}
+      </AnimatePresence>
 
       <Button
         isIconOnly
@@ -99,7 +129,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
         {banners.map((_, index) => (
           <button
             key={index}
-            className={cn("h-2 w-2 rounded-full transition-all" ,
+            className={cn("h-2 w-2 rounded-full transition-all",
               index === currentIndex ? "w-4 bg-primary" : "bg-white/50"
             )
             }
@@ -111,3 +141,4 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
     </div>
   );
 };
+

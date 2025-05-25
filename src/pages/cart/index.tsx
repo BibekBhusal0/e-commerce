@@ -4,6 +4,7 @@ import { Button, Card, CardBody, CardFooter, Divider, Input } from "@heroui/reac
 import { Icon } from "@iconify/react";
 import { useCart } from "../../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
+import NumberFlow from '@number-flow/react'
 
 export const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal, getProduct } =
@@ -95,7 +96,9 @@ export const CartPage: React.FC = () => {
                             >
                               <Icon icon="lucide:minus" width={16} />
                             </Button>
-                            <span className="w-8 text-center">{item.quantity}</span>
+                            <NumberFlow
+                              spinTiming={{ duration: 100, }}
+                              className='px-2' value={item.quantity} />
                             <Button
                               isIconOnly
                               variant="flat"
@@ -157,24 +160,36 @@ export const CartPage: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-default-600">Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <NumberFlow
+                    value={subtotal}
+                    format={{ style: 'currency', currency: 'USD', }}
+                  />
                 </div>
 
                 <div className="flex justify-between">
                   <span className="text-default-600">Shipping</span>
-                  <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                  <span>{shipping === 0 ? "Free" : <NumberFlow
+                    value={shipping}
+                    format={{ style: 'currency', currency: 'USD', }}
+                  />}</span>
                 </div>
 
                 <div className="flex justify-between">
                   <span className="text-default-600">Tax</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <NumberFlow
+                    value={tax}
+                    format={{ style: 'currency', currency: 'USD', }}
+                  />
                 </div>
 
                 <Divider />
 
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <NumberFlow
+                    value={total}
+                    format={{ style: 'currency', currency: 'USD', }}
+                  />
                 </div>
               </div>
 

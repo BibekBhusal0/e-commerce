@@ -15,11 +15,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   return (
     <motion.div
+      className = 'relative'
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="h-full w-full" isPressable disableRipple>
+      <Card className="size-full" isPressable >
         <Link to={`/product/${product.id}`} className="flex h-full flex-col">
           <div className="relative">
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
@@ -49,21 +50,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <span className="ml-1 text-xs">{product.rating.toFixed(1)}</span>
             </div>
           </CardBody>
-
           <CardFooter className="flex items-center justify-between p-3 pt-0">
             <p className="font-semibold">${product.price.toFixed(2)}</p>
-            <Button
-              size="sm"
-              color="primary"
-              variant="flat"
-              onPress={() => { addToCart(product.id); }}
-              startContent={<Icon icon="lucide:shopping-cart" width={16} />}
-            >
-              Add
-            </Button>
           </CardFooter>
         </Link>
       </Card>
+      <Button
+        size="sm"
+        color="primary"
+        variant="flat"
+        className = 'absolute bottom-2 right-2'
+        onPress={() => { addToCart(product.id); }}
+        startContent={<Icon icon="lucide:shopping-cart" width={16} />}
+      >
+        Add
+      </Button>
     </motion.div>
   );
 };

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button, Divider, Chip, Accordion, AccordionItem } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -16,6 +16,9 @@ export const ProductPage= () => {
   const [quantity, setQuantity] = useState(1);
 
   const product = products.find((p) => p.id === id);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getTagColor = (tag: ProductTag) => {
     switch (tag) {
@@ -253,3 +256,4 @@ export const ProductPage= () => {
     </div>
   );
 };
+

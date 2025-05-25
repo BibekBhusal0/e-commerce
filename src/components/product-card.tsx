@@ -20,7 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="size-full" isPressable >
+      <Card className="size-full" >
         <Link to={`/product/${product.id}`} className="flex h-full flex-col">
           <div className="relative">
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />

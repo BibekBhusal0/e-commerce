@@ -58,7 +58,7 @@ export const Header = () => {
             </DropdownItem>
             <>{categories.map((category) => (
               <DropdownItem key={category} textValue={category}>
-                <Link href= '#' className="w-full text-foreground">
+                <Link href='#' className="w-full text-foreground">
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </Link>
               </DropdownItem>
@@ -97,7 +97,7 @@ export const Header = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href= '#' className="w-full text-foreground">
+                  <Link href='#' className="w-full text-foreground">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, CardBody, CardFooter, Divider, Input } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useCart } from "../../context/CartContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal, getProduct } =
@@ -47,96 +47,100 @@ export const CartPage: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="space-y-4">
-            {cartItems.map((item) => {
-              const product = getProduct(item.productId);
-              if (!product) return null;
+          <div className="flex flex-col gap-5">
+            <AnimatePresence mode='sync' >
+              {cartItems.map((item) => {
+                const product = getProduct(item.productId);
+                if (!product) return null;
+                return (
+                  <motion.div
+                    key={item.productId}
+                    className="overflow-hidden rounded-lg border border-divider"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20, x: -300 }}
+                    transition={{ duration: 0.3 }}
+                    layout
+                  >
+                    <div className="flex flex-col sm:flex-row">
+                      <Link to={`/product/${product.id}`} className="h-32 sm:w-32">
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          className="h-full w-full object-cover"
+                        />
+                      </Link>
 
-              return (
-                <motion.div
-                  key={item.productId}
-                  className="overflow-hidden rounded-lg border border-divider"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-col sm:flex-row">
-                    <Link to={`/product/${product.id}`} className="h-32 sm:w-32">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="h-full w-full object-cover"
-                      />
-                    </Link>
-
-                    <div className="flex flex-1 flex-col justify-between p-4">
-                      <div className="flex justify-between">
-                        <div>
-                          <Link to={`/product/${product.id}`}>
-                            <h3 className="mb-1 font-medium">{product.title}</h3>
-                          </Link>
-                          <p className="mb-2 text-sm text-default-500">
-                            Category:{" "}
-                            {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
-                          </p>
-                        </div>
-                        <p className="font-semibold">${product.price.toFixed(2)}</p>
-                      </div>
-
-                      <div className="mt-2 flex items-center justify-between">
-                        <div className="flex items-center">
-                          <Button
-                            isIconOnly
-                            variant="flat"
-                            size="sm"
-                            onPress={() => handleQuantityChange(product.id, item.quantity - 1)}
-                          >
-                            <Icon icon="lucide:minus" width={16} />
-                          </Button>
-                          <span className="w-8 text-center">{item.quantity}</span>
-                          <Button
-                            isIconOnly
-                            variant="flat"
-                            size="sm"
-                            onPress={() => handleQuantityChange(product.id, item.quantity + 1)}
-                          >
-                            <Icon icon="lucide:plus" width={16} />
-                          </Button>
+                      <div className="flex flex-1 flex-col justify-between p-4">
+                        <div className="flex justify-between">
+                          <div>
+                            <Link to={`/product/${product.id}`}>
+                              <h3 className="mb-1 font-medium">{product.title}</h3>
+                            </Link>
+                            <p className="mb-2 text-sm text-default-500">
+                              Category:{" "}
+                              {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                            </p>
+                          </div>
+                          <p className="font-semibold">${product.price.toFixed(2)}</p>
                         </div>
 
-                        <Button
-                          isIconOnly
-                          variant="light"
-                          color="danger"
-                          size="sm"
-                          onPress={() => removeFromCart(product.id)}
-                        >
-                          <Icon icon="lucide:trash-2" width={16} />
-                        </Button>
+                        <div className="mt-2 flex items-center justify-between">
+                          <div className="flex items-center">
+                            <Button
+                              isIconOnly
+                              variant="flat"
+                              size="sm"
+                              onPress={() => handleQuantityChange(product.id, item.quantity - 1)}
+                            >
+                              <Icon icon="lucide:minus" width={16} />
+                            </Button>
+                            <span className="w-8 text-center">{item.quantity}</span>
+                            <Button
+                              isIconOnly
+                              variant="flat"
+                              size="sm"
+                              onPress={() => handleQuantityChange(product.id, item.quantity + 1)}
+                            >
+                              <Icon icon="lucide:plus" width={16} />
+                            </Button>
+                          </div>
+
+                          <Button
+                            isIconOnly
+                            variant="light"
+                            color="danger"
+                            size="sm"
+                            onPress={() => removeFromCart(product.id)}
+                          >
+                            <Icon icon="lucide:trash-2" width={16} />
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+              <motion.div layout className="mt-6 flex justify-between">
+                <Button
+                  variant="flat"
+                  color="danger"
+                  startContent={<Icon icon="lucide:trash" width={16} />}
+                  onPress={clearCart}
+                >
+                  Clear Cart
+                </Button>
+
+                <Link to="/">
+                  <Button variant="light" startContent={<Icon icon="lucide:arrow-left" width={16} />}>
+                    Continue Shopping
+                  </Button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+
           </div>
 
-          <div className="mt-6 flex justify-between">
-            <Button
-              variant="flat"
-              color="danger"
-              startContent={<Icon icon="lucide:trash" width={16} />}
-              onPress={clearCart}
-            >
-              Clear Cart
-            </Button>
-
-            <Link to="/">
-              <Button variant="light" startContent={<Icon icon="lucide:arrow-left" width={16} />}>
-                Continue Shopping
-              </Button>
-            </Link>
-          </div>
         </motion.div>
 
         {/* Order Summary */}
@@ -217,3 +221,4 @@ export const CartPage: React.FC = () => {
     </div>
   );
 };
+

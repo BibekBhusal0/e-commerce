@@ -9,7 +9,7 @@ interface RatingStarsProps {
 export const RatingStars: React.FC<RatingStarsProps> = ({ rating, size = 16 }) => {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-  
+
   return (
     <div className="flex items-center">
       {[...Array(5)].map((_, i) => {

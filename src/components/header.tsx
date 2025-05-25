@@ -1,6 +1,18 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Input, Badge, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Input,
+  Badge,
+  Button,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useCart } from "../context/CartContext";
 import { navItems, categories } from "../data/mock-data";
@@ -13,43 +25,44 @@ export const Header: React.FC<HeaderProps> = () => {
   const location = useLocation();
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
-  
+
   return (
     <Navbar maxWidth="2xl" className="border-b border-divider">
       <NavbarContent className="sm:hidden" justify="start">
         <Dropdown>
           <DropdownTrigger>
-            <Button 
-              isIconOnly 
-              variant="light" 
-              aria-label="Menu"
-            >
+            <Button isIconOnly variant="light" aria-label="Menu">
               <Icon icon="lucide:menu" width={24} />
             </Button>
           </DropdownTrigger>
           <DropdownMenu aria-label="Navigation">
-            <DropdownItem key="nav-header" className="text-sm font-medium text-foreground-500" isReadOnly>
+            <DropdownItem
+              key="nav-header"
+              className="text-sm font-medium text-foreground-500"
+              isReadOnly
+            >
               Navigation
             </DropdownItem>
             {navItems.map((item) => (
               <DropdownItem key={item.name} textValue={item.name}>
-                <Link 
-                  to={item.href} 
-                  className={`w-full ${location.pathname === item.href ? 'text-primary font-medium' : 'text-foreground'}`}
+                <Link
+                  to={item.href}
+                  className={`w-full ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
                 >
                   {item.name}
                 </Link>
               </DropdownItem>
             ))}
-            <DropdownItem key="categories-header" className="text-sm font-medium text-foreground-500" isReadOnly>
+            <DropdownItem
+              key="categories-header"
+              className="text-sm font-medium text-foreground-500"
+              isReadOnly
+            >
               Categories
             </DropdownItem>
             {categories.map((category) => (
               <DropdownItem key={category} textValue={category}>
-                <Link 
-                  to={`/category/${category}`} 
-                  className="w-full text-foreground"
-                >
+                <Link to={`/category/${category}`} className="w-full text-foreground">
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </Link>
               </DropdownItem>
@@ -57,18 +70,18 @@ export const Header: React.FC<HeaderProps> = () => {
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
-      
+
       <NavbarBrand className="flex gap-2">
         <Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
         <p className="font-bold text-inherit">ShopEase</p>
       </NavbarBrand>
-      
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+
+      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         {navItems.map((item) => (
           <NavbarItem key={item.name} isActive={location.pathname === item.href}>
-            <Link 
-              to={item.href} 
-              className={`text-sm ${location.pathname === item.href ? 'text-primary font-medium' : 'text-foreground'}`}
+            <Link
+              to={item.href}
+              className={`text-sm ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
             >
               {item.name}
             </Link>
@@ -77,8 +90,8 @@ export const Header: React.FC<HeaderProps> = () => {
         <NavbarItem>
           <Dropdown>
             <DropdownTrigger>
-              <Button 
-                variant="light" 
+              <Button
+                variant="light"
                 className="text-sm"
                 endContent={<Icon icon="lucide:chevron-down" width={16} />}
               >
@@ -88,10 +101,7 @@ export const Header: React.FC<HeaderProps> = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link 
-                    to={`/category/${category}`} 
-                    className="w-full text-foreground"
-                  >
+                  <Link to={`/category/${category}`} className="w-full text-foreground">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -100,9 +110,9 @@ export const Header: React.FC<HeaderProps> = () => {
           </Dropdown>
         </NavbarItem>
       </NavbarContent>
-      
+
       <NavbarContent justify="end">
-        <NavbarItem className="flex-1 sm:flex-none sm:w-64">
+        <NavbarItem className="flex-1 sm:w-64 sm:flex-none">
           <Input
             classNames={{
               base: "max-w-full",
@@ -112,7 +122,7 @@ export const Header: React.FC<HeaderProps> = () => {
             startContent={<Icon icon="lucide:search" className="text-default-400" width={18} />}
           />
         </NavbarItem>
-        
+
         <NavbarItem>
           <Link to="/cart">
             <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
@@ -122,7 +132,7 @@ export const Header: React.FC<HeaderProps> = () => {
             </Badge>
           </Link>
         </NavbarItem>
-        
+
         <NavbarItem className="hidden sm:flex">
           <Button isIconOnly variant="light" aria-label="User">
             <Icon icon="lucide:user" width={24} />

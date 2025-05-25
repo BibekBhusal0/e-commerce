@@ -8,11 +8,11 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <div className="min-h-screen flex flex-col">
+        <div className="flex min-h-screen flex-col">
           <Header />
-          
+
           <div className="flex flex-1">
-            <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
+            <main className="mx-auto w-full max-w-7xl flex-1 p-4 sm:p-6">
               <Routes />
             </main>
           </div>

@@ -13,25 +13,29 @@ export const banners: Banner[] = [
     id: "3",
     image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner9",
     title: "Limited Time Offer",
-    description: "Buy one get one free on selected items. This weekend only! Shop our curated collection of seasonal must-haves before they're gone.",
+    description:
+      "Buy one get one free on selected items. This weekend only! Shop our curated collection of seasonal must-haves before they're gone.",
   },
   {
     id: "2",
     image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner2",
     title: "Exclusive New Arrivals",
-    description: "Be the first to discover our latest products. Premium quality items that combine style and comfort. Free shipping on orders over $50!",
+    description:
+      "Be the first to discover our latest products. Premium quality items that combine style and comfort. Free shipping on orders over $50!",
   },
   {
     id: "1",
     image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner6",
     title: "Summer Collection 2025",
-    description: "Get up to 50% off on our new summer collection. Explore the latest trends in fashion with breathable fabrics perfect for the season. Limited time offer!",
+    description:
+      "Get up to 50% off on our new summer collection. Explore the latest trends in fashion with breathable fabrics perfect for the season. Limited time offer!",
   },
   {
     id: "4",
     image: "https://img.heroui.chat/image/fashion?w=1200&h=400&u=banner4",
     title: "Premium Accessories",
-    description: "Complete your look with our handcrafted accessories. Designed for style and durability. Use code EXTRA10 for an additional 10% off!",
+    description:
+      "Complete your look with our handcrafted accessories. Designed for style and durability. Use code EXTRA10 for an additional 10% off!",
   },
 ];
 
@@ -42,7 +46,7 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product1",
     price: 199.99,
     category: "accessories",
-    tags: ["new", ],
+    tags: ["new"],
     rating: 4.5,
     reviews: [
       {
@@ -50,14 +54,14 @@ export const products: Product[] = [
         name: "John Doe",
         text: "Great quality and fits perfectly! The leather is soft yet durable, and the stitching is impeccable. I've received many compliments wearing this jacket.",
         rating: 5,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user1"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user1",
       },
       {
         id: "r2",
         name: "Jane Smith",
         text: "Love the design and material. The color is exactly as shown in the pictures. Shipping was fast too!",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user2"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user2",
       },
     ],
   },
@@ -75,14 +79,14 @@ export const products: Product[] = [
         name: "Mike Johnson",
         text: "Amazing sound quality! The noise cancellation is perfect for my daily commute. Battery life is impressive too - lasts me a full week of regular use.",
         rating: 5,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user3"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user3",
       },
       {
         id: "r4",
         name: "Sarah Williams",
         text: "Great headphones for the price. Comfortable to wear for long periods and the sound is crisp and clear.",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user4"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user4",
       },
     ],
   },
@@ -100,7 +104,7 @@ export const products: Product[] = [
         name: "Alex Chen",
         text: "Sleek design and intuitive interface. The fitness tracking features are accurate and the battery lasts longer than expected.",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user5"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user5",
       },
     ],
   },
@@ -118,7 +122,7 @@ export const products: Product[] = [
         name: "Emma Davis",
         text: "Perfect for my morning runs! Comfortable, lightweight, and provide great support.",
         rating: 5,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user6"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user6",
       },
     ],
   },
@@ -136,7 +140,7 @@ export const products: Product[] = [
         name: "Tom Wilson",
         text: "Good quality fabric and the fit is true to size. Would buy again in different colors.",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user7"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user7",
       },
     ],
   },
@@ -154,7 +158,7 @@ export const products: Product[] = [
         name: "Lisa Brown",
         text: "Spacious and well-designed. Has plenty of compartments and the padding protects.",
         rating: 5,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user8"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user8",
       },
     ],
   },
@@ -172,7 +176,7 @@ export const products: Product[] = [
         name: "Olivia Taylor",
         text: "Stylish design and good UV protection. The case that comes with it is sturdy too.",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10",
       },
     ],
   },
@@ -190,7 +194,7 @@ export const products: Product[] = [
         name: "Olivia Taylor",
         text: "Really good look",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10",
       },
     ],
   },
@@ -202,8 +206,7 @@ export const products: Product[] = [
     category: "footwear",
     tags: ["new"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "11",
@@ -219,7 +222,7 @@ export const products: Product[] = [
         name: "Olivia Taylor",
         text: "Stylish design and good UV protection. The case that comes with it is sturdy too.",
         rating: 4,
-        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10"
+        profilePicture: "https://img.heroui.chat/image/avatar?w=200&h=200&u=user10",
       },
     ],
   },
@@ -231,8 +234,7 @@ export const products: Product[] = [
     category: "Clothing",
     tags: ["hot"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "13",
@@ -242,8 +244,7 @@ export const products: Product[] = [
     category: "Clothing",
     tags: [],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "14",
@@ -251,10 +252,9 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product14",
     price: 499.99,
     category: "accessories",
-    tags: ['30% off'],
+    tags: ["30% off"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "15",
@@ -262,10 +262,9 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product15",
     price: 499.99,
     category: "accessories",
-    tags: ['30% off'],
+    tags: ["30% off"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "16",
@@ -273,10 +272,9 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product16",
     price: 499.99,
     category: "accessories",
-    tags: ['30% off'],
+    tags: ["30% off"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "17",
@@ -284,10 +282,9 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product17",
     price: 499.99,
     category: "footwear",
-    tags: ['30% off'],
+    tags: ["30% off"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "18",
@@ -297,8 +294,7 @@ export const products: Product[] = [
     category: "accessories",
     tags: [],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
   {
     id: "19",
@@ -306,11 +302,10 @@ export const products: Product[] = [
     image: "https://img.heroui.chat/image/fashion?w=400&h=500&u=product19",
     price: 49.99,
     category: "accessories",
-    tags: ['30% off'],
+    tags: ["30% off"],
     rating: 4.1,
-    reviews: [
-    ],
+    reviews: [],
   },
 ];
 
-export const categories = [...new Set(products.map(product => product.category))];
+export const categories = [...new Set(products.map((product) => product.category))];

@@ -14,92 +14,96 @@ export const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = React.useState(1);
-  
-  const product = products.find(p => p.id === id);
-  
+
+  const product = products.find((p) => p.id === id);
+
   const getTagColor = (tag: ProductTag) => {
     switch (tag) {
       case "new":
         return {
           color: "success",
           gradient: "from-green-400 to-emerald-600",
-          icon: "lucide:sparkles"
+          icon: "lucide:sparkles",
         };
       case "hot":
         return {
           color: "danger",
           gradient: "from-red-400 to-rose-600",
-          icon: "lucide:flame"
+          icon: "lucide:flame",
         };
       case "30% off":
         return {
           color: "warning",
           gradient: "from-amber-400 to-orange-600",
-          icon: "lucide:tag"
+          icon: "lucide:tag",
         };
       case "most popular":
         return {
           color: "secondary",
           gradient: "from-purple-400 to-violet-600",
-          icon: "lucide:trending-up"
+          icon: "lucide:trending-up",
         };
       default:
         return {
           color: "default",
           gradient: "from-blue-400 to-indigo-600",
-          icon: ""
+          icon: "",
         };
     }
   };
-  
+
   if (!product) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <Icon icon="lucide:alert-circle" width={48} className="text-danger mb-4" />
-        <h2 className="text-xl font-semibold mb-2">Product Not Found</h2>
-        <p className="text-default-500 mb-6">The product you're looking for doesn't exist or has been removed.</p>
+        <Icon icon="lucide:alert-circle" width={48} className="mb-4 text-danger" />
+        <h2 className="mb-2 text-xl font-semibold">Product Not Found</h2>
+        <p className="mb-6 text-default-500">
+          The product you're looking for doesn't exist or has been removed.
+        </p>
         <Link to="/">
           <Button color="primary">Back to Home</Button>
         </Link>
       </div>
     );
   }
-  
+
   const relatedProducts = products.filter(
-    p => p.category === product.category && p.id !== product.id
+    (p) => p.category === product.category && p.id !== product.id
   );
-  
+
   const handleQuantityChange = (value: number) => {
     if (value >= 1) {
       setQuantity(value);
     }
   };
-  
+
   return (
     <div className="pb-12">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col gap-8 md:flex-row">
         {/* Product Image */}
-        <motion.div 
+        <motion.div
           className="w-full md:w-1/2"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="relative rounded-lg overflow-hidden">
+          <div className="relative overflow-hidden rounded-lg">
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-auto object-cover aspect-square"
+              className="aspect-square h-auto w-full object-cover"
             />
-            <div className="absolute top-4 left-4 flex flex-wrap gap-1">
+            <div className="absolute left-4 top-4 flex flex-wrap gap-1">
               {product.tags.map((tag) => {
                 const tagStyle = getTagColor(tag);
                 return (
                   <Chip
                     key={tag}
                     size="sm"
-                    className={`bg-gradient-to-r ${tagStyle.gradient} text-white border-none`}
-                    startContent={tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined}
+                    className={`bg-gradient-to-r ${tagStyle.gradient} border-none text-white`}
+                    startContent={
+                      tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined
+                    }
                   >
                     {tag}
                   </Chip>
@@ -108,45 +112,45 @@ export const ProductPage: React.FC = () => {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Product Details */}
-        <motion.div 
+        <motion.div
           className="w-full md:w-1/2"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
-          <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
-          
-          <div className="flex items-center gap-2 mb-4">
+          <h1 className="mb-2 text-2xl font-semibold">{product.title}</h1>
+
+          <div className="mb-4 flex items-center gap-2">
             <RatingStars rating={product.rating} />
             <span className="text-sm text-default-500">
               ({product.rating.toFixed(1)}) • {product.reviews.length} reviews
             </span>
           </div>
-          
-          <p className="text-2xl font-bold mb-6">${product.price.toFixed(2)}</p>
-          
+
+          <p className="mb-6 text-2xl font-bold">${product.price.toFixed(2)}</p>
+
           <div className="mb-6">
-            <p className="text-sm text-default-600 mb-4">
+            <p className="mb-4 text-sm text-default-600">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel
               tincidunt lacinia, nisl nisl aliquam nisl, eget aliquam nunc nisl eu lectus.
             </p>
-            
-            <div className="flex items-center gap-2 mb-2">
+
+            <div className="mb-2 flex items-center gap-2">
               <Icon icon="lucide:check-circle" className="text-success" width={16} />
               <span className="text-sm">In stock and ready to ship</span>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Icon icon="lucide:truck" className="text-default-500" width={16} />
               <span className="text-sm">Free shipping on orders over $50</span>
             </div>
           </div>
-          
+
           <Divider className="my-6" />
-          
-          <div className="flex items-center gap-4 mb-6">
+
+          <div className="mb-6 flex items-center gap-4">
             <div className="flex items-center">
               <Button
                 isIconOnly
@@ -167,7 +171,7 @@ export const ProductPage: React.FC = () => {
                 <Icon icon="lucide:plus" width={16} />
               </Button>
             </div>
-            
+
             <Button
               color="primary"
               className="flex-1"
@@ -177,19 +181,19 @@ export const ProductPage: React.FC = () => {
               Add to Cart
             </Button>
           </div>
-          
+
           <Accordion>
             <AccordionItem key="1" title="Product Details">
               <div className="text-sm text-default-600">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel
-                  tincidunt lacinia, nisl nisl aliquam nisl, eget aliquam nunc nisl eu lectus.
-                  Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquam nisl, eget aliquam
-                  nunc nisl eu lectus.
+                  tincidunt lacinia, nisl nisl aliquam nisl, eget aliquam nunc nisl eu lectus. Sed
+                  euismod, nunc vel tincidunt lacinia, nisl nisl aliquam nisl, eget aliquam nunc
+                  nisl eu lectus.
                 </p>
               </div>
             </AccordionItem>
-            
+
             <AccordionItem key="2" title="Shipping & Returns">
               <div className="text-sm text-default-600">
                 <p>
@@ -201,22 +205,18 @@ export const ProductPage: React.FC = () => {
           </Accordion>
         </motion.div>
       </div>
-      
+
       {/* Reviews Section */}
       <div className="mt-12">
-        <h2 className="text-xl font-semibold mb-6">Customer Reviews</h2>
-        
+        <h2 className="mb-6 text-xl font-semibold">Customer Reviews</h2>
+
         {product.reviews.length > 0 ? (
           <div className="space-y-6">
             {product.reviews.map((review) => (
-              <div key={review.id} className="border border-divider rounded-lg p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div key={review.id} className="rounded-lg border border-divider p-4">
+                <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Avatar 
-                      src={review.profilePicture} 
-                      name={review.name} 
-                      size="md"
-                    />
+                    <Avatar src={review.profilePicture} name={review.name} size="md" />
                     <div>
                       <h3 className="font-medium">{review.name}</h3>
                       <RatingStars rating={review.rating} size={14} />
@@ -229,13 +229,17 @@ export const ProductPage: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-8 border border-dashed border-divider rounded-lg">
-            <Icon icon="lucide:message-square" className="mx-auto mb-2 text-default-400" width={32} />
+          <div className="rounded-lg border border-dashed border-divider py-8 text-center">
+            <Icon
+              icon="lucide:message-square"
+              className="mx-auto mb-2 text-default-400"
+              width={32}
+            />
             <p className="text-default-500">No reviews yet. Be the first to review this product!</p>
           </div>
         )}
       </div>
-      
+
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <div className="mt-12">

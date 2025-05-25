@@ -17,25 +17,25 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
   category,
 }) => {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
-  
+
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
     }
   };
-  
+
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   };
-  
+
   return (
     <div className="mb-8">
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-semibold">{title}</h2>
         <div className="flex items-center gap-2">
-          <div className="hidden sm:flex gap-2">
+          <div className="hidden gap-2 sm:flex">
             <Button
               isIconOnly
               size="sm"
@@ -67,17 +67,14 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
           </Link>
         </div>
       </div>
-      
-      <div 
+
+      <div
         ref={scrollContainerRef}
-        className="flex gap-4 overflow-x-auto pb-4 snap-x scrollbar-hide"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex snap-x gap-4 overflow-x-auto pb-4 scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product) => (
-          <div 
-            key={product.id} 
-            className="min-w-[220px] max-w-[220px] snap-start"
-          >
+          <div key={product.id} className="min-w-[220px] max-w-[220px] snap-start">
             <ProductCard product={product} />
           </div>
         ))}

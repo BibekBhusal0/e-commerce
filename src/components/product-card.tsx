@@ -12,69 +12,63 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
-  
+
   const getTagColor = (tag: ProductTag) => {
     switch (tag) {
       case "new":
         return {
           color: "success",
           gradient: "from-green-400 to-emerald-600",
-          icon: "lucide:sparkles"
+          icon: "lucide:sparkles",
         };
       case "hot":
         return {
           color: "danger",
           gradient: "from-red-400 to-rose-600",
-          icon: "lucide:flame"
+          icon: "lucide:flame",
         };
       case "30% off":
         return {
           color: "warning",
           gradient: "from-amber-400 to-orange-600",
-          icon: "lucide:tag"
+          icon: "lucide:tag",
         };
       case "most popular":
         return {
           color: "secondary",
           gradient: "from-purple-400 to-violet-600",
-          icon: "lucide:trending-up"
+          icon: "lucide:trending-up",
         };
       default:
         return {
           color: "default",
           gradient: "from-blue-400 to-indigo-600",
-          icon: ""
+          icon: "",
         };
     }
   };
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card 
-        className="w-full h-full"
-        isPressable
-        disableRipple
-      >
-        <Link to={`/product/${product.id}`} className="flex flex-col h-full">
+      <Card className="h-full w-full" isPressable disableRipple>
+        <Link to={`/product/${product.id}`} className="flex h-full flex-col">
           <div className="relative">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute top-2 left-2 flex flex-wrap gap-1">
+            <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
+            <div className="absolute left-2 top-2 flex flex-wrap gap-1">
               {product.tags.map((tag) => {
                 const tagStyle = getTagColor(tag);
                 return (
                   <Chip
                     key={tag}
                     size="sm"
-                    className={`bg-gradient-to-r ${tagStyle.gradient} text-white border-none`}
-                    startContent={tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined}
+                    className={`bg-gradient-to-r ${tagStyle.gradient} border-none text-white`}
+                    startContent={
+                      tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined
+                    }
                   >
                     {tag}
                   </Chip>
@@ -82,20 +76,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               })}
             </div>
           </div>
-          
-          <CardBody className="p-3 flex-grow">
-            <h3 className="font-medium text-sm line-clamp-2">{product.title}</h3>
-            <div className="flex items-center mt-1">
+
+          <CardBody className="flex-grow p-3">
+            <h3 className="line-clamp-2 text-sm font-medium">{product.title}</h3>
+            <div className="mt-1 flex items-center">
               <Icon icon="lucide:star" className="text-warning" width={16} />
-              <span className="text-xs ml-1">{product.rating.toFixed(1)}</span>
+              <span className="ml-1 text-xs">{product.rating.toFixed(1)}</span>
             </div>
           </CardBody>
-          
-          <CardFooter className="p-3 pt-0 flex justify-between items-center">
+
+          <CardFooter className="flex items-center justify-between p-3 pt-0">
             <p className="font-semibold">${product.price.toFixed(2)}</p>
-            <Button 
-              size="sm" 
-              color="primary" 
+            <Button
+              size="sm"
+              color="primary"
               variant="flat"
               onPress={(e) => {
                 e.preventDefault();

@@ -18,7 +18,7 @@ export const ProductPage = () => {
   const product = products.find((p) => p.id === id);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
   if (!product) {
     return (

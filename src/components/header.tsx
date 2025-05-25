@@ -1,6 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Navbar,
+  Link,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
@@ -41,7 +42,7 @@ export const Header = () => {
             <>{navItems.map((item) => (
               <DropdownItem key={item.name} textValue={item.name}>
                 <Link
-                  to={item.href}
+                  href={item.href}
                   className={`w-full ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
                 >
                   {item.name}
@@ -57,7 +58,7 @@ export const Header = () => {
             </DropdownItem>
             <>{categories.map((category) => (
               <DropdownItem key={category} textValue={category}>
-                <Link to={`/category/${category}`} className="w-full text-foreground">
+                <Link href= '#' className="w-full text-foreground">
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </Link>
               </DropdownItem>
@@ -75,7 +76,7 @@ export const Header = () => {
         {navItems.map((item) => (
           <NavbarItem key={item.name} isActive={location.pathname === item.href}>
             <Link
-              to={item.href}
+              href={item.href}
               className={`text-sm ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
             >
               {item.name}
@@ -96,7 +97,7 @@ export const Header = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link to={`/category/${category}`} className="w-full text-foreground">
+                  <Link href= '#' className="w-full text-foreground">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -119,7 +120,7 @@ export const Header = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <Link to="/cart">
+          <Link href="/cart">
             <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
               <Button isIconOnly variant="light" aria-label="Cart">
                 <Icon icon="lucide:shopping-cart" width={24} />

@@ -38,7 +38,6 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     };
     checkScrollable();
     window.addEventListener("resize", checkScrollable);
-
     return () => {
       window.removeEventListener("resize", checkScrollable);
     };
@@ -47,14 +46,12 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-      setTimeout(checkScrollPosition, 100);
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      setTimeout(checkScrollPosition, 100);
     }
   };
 
@@ -101,6 +98,7 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
       <div
         ref={scrollContainerRef}
         className="flex snap-x gap-4 overflow-x-auto pb-4 scrollbar-hide"
+        onScroll={checkScrollPosition}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product) => (

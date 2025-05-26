@@ -4,8 +4,6 @@ export const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "Products", href: "#" },
   { name: "Categories", href: "#" },
-  { name: "Deals", href: "#" },
-  { name: "Contact", href: "#" },
 ];
 
 export const banners: Banner[] = [

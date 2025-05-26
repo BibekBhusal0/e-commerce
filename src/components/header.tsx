@@ -25,7 +25,7 @@ export const Header = () => {
 
   return (
     <Navbar maxWidth="2xl" className="border-b border-divider" aria-label="Main Navigation">
-      <NavbarContent className="sm:hidden" justify="start">
+      <NavbarContent className="md:hidden" justify="start">
         <Dropdown>
           <DropdownTrigger>
             <Button isIconOnly variant="light" aria-label="Menu">
@@ -80,7 +80,7 @@ export const Header = () => {
         </Link>
       </NavbarBrand>
 
-      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+      <NavbarContent className="hidden gap-4 md:flex" justify="center">
         {navItems.map((item) => (
           <NavbarItem key={item.name} isActive={location.pathname === item.href}>
             <Link
@@ -118,7 +118,7 @@ export const Header = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="flex-1 sm:w-64 sm:flex-none">
+        <NavbarItem className="flex-1 md:w-64 md:flex-none">
           <Input
             classNames={{
               base: "max-w-full",
@@ -138,7 +138,7 @@ export const Header = () => {
           </Badge>
         </NavbarItem>
 
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className="hidden md:flex">
           <Button isIconOnly variant="light" aria-label="User account">
             <Icon icon="lucide:user" width={24} />
           </Button>

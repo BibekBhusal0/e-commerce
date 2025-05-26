@@ -12,6 +12,7 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
+  cn,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useCart } from "../context/CartContext";
@@ -44,7 +45,7 @@ export const Header = () => {
                 <DropdownItem key={item.name} textValue={item.name}>
                   <Link
                     href={item.href}
-                    className={`w-full ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
+                    className={cn("w-full", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
                   >
                     {item.name}
                   </Link>
@@ -83,7 +84,7 @@ export const Header = () => {
           <NavbarItem key={item.name} isActive={location.pathname === item.href}>
             <Link
               href={item.href}
-              className={`text-sm ${location.pathname === item.href ? "font-medium text-primary" : "text-foreground"}`}
+              className={cn("text-sm", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
             >
               {item.name}
             </Link>
@@ -126,13 +127,11 @@ export const Header = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <Link href="/cart">
-            <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
-              <Button isIconOnly variant="light" aria-label="Cart">
-                <Icon icon="lucide:shopping-cart" width={24} />
-              </Button>
-            </Badge>
-          </Link>
+          <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
+            <Button as={Link} href='/cart' isIconOnly variant="light" aria-label="Cart">
+              <Icon icon="lucide:shopping-cart" width={24} />
+            </Button>
+          </Badge>
         </NavbarItem>
 
         <NavbarItem className="hidden sm:flex">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, CardFooter, Button, Chip } from "@heroui/react";
+import { Card, CardBody, CardFooter, Button, Chip, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { Product } from "../types";
 import { useCart } from "../context/CartContext";
@@ -22,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     >
       <Card className="size-full">
         <Link to={`/product/${product.id}`} className="flex h-full flex-col">
-          <div className="relative">
+          <div>
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
             <div className="absolute left-2 top-2 flex flex-wrap gap-1">
               {product.tags.map((tag) => {
@@ -31,7 +31,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   <Chip
                     key={tag}
                     size="sm"
-                    className={`bg-gradient-to-r ${tagStyle.gradient} border-none text-white`}
+                    className={cn("bg-gradient-to-r border-none text-white", tagStyle.gradient)}
                     startContent={
                       tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined
                     }

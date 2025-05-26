@@ -21,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       transition={{ duration: 0.3 }}
     >
       <Card className="size-full">
-        <Link to={`/product/${product.id}`} className="flex h-full flex-col">
+        <Link to={`/product/${product.id}`} className="flex h-full flex-col" aria-label={`View details for ${product.title}`}>
           <div>
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
             <div className="absolute left-2 top-2 flex flex-wrap gap-1">
@@ -64,9 +64,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           addToCart(product.id);
         }}
         startContent={<Icon icon="lucide:shopping-cart" width={16} />}
+        aria-label={`Add ${product.title} to cart`}
       >
         Add
       </Button>
     </motion.div>
   );
 };
+

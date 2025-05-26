@@ -89,6 +89,7 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
             variant="light"
             color="primary"
             endContent={<Icon icon="lucide:arrow-right" width={16} />}
+            aria-label={`View all ${title} products`}
           >
             View All
           </Button>
@@ -99,6 +100,7 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
         ref={scrollContainerRef}
         className="flex snap-x gap-4 overflow-x-auto pb-4 scrollbar-hide"
         onScroll={checkScrollPosition}
+        aria-label={`scrollable container for ${title}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product) => (
@@ -110,3 +112,4 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     </div>
   );
 };
+

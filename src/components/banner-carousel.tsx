@@ -134,6 +134,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
             )}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
+            aria-hidden
           />
         ))}
       </div>

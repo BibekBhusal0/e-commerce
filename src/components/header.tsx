@@ -24,7 +24,7 @@ export const Header = () => {
   const cartCount = getCartCount();
 
   return (
-    <Navbar maxWidth="2xl" className="border-b border-divider">
+    <Navbar maxWidth="2xl" className="border-b border-divider" aria-label="Main Navigation">
       <NavbarContent className="sm:hidden" justify="start">
         <Dropdown>
           <DropdownTrigger>
@@ -46,6 +46,7 @@ export const Header = () => {
                   <Link
                     href={item.href}
                     className={cn("w-full", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
+                    aria-label={`Navigate to ${item.name}`}
                   >
                     {item.name}
                   </Link>
@@ -62,7 +63,7 @@ export const Header = () => {
             <>
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href="#" className="w-full text-foreground">
+                  <Link href="#" className="w-full text-foreground" aria-label={`View category ${category}`}>
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -73,7 +74,7 @@ export const Header = () => {
       </NavbarContent>
 
       <NavbarBrand>
-        <Link href="/" className="flex gap-2">
+        <Link href="/" className="flex gap-2" aria-label="Homepage">
           <Icon icon="lucide:shopping-bag" className="text-primary" width={28} height={28} />
           <p className="font-bold text-inherit">ShopEase</p>
         </Link>
@@ -85,6 +86,7 @@ export const Header = () => {
             <Link
               href={item.href}
               className={cn("text-sm", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
+              aria-label={`Navigate to ${item.name}`}
             >
               {item.name}
             </Link>
@@ -97,6 +99,7 @@ export const Header = () => {
                 variant="light"
                 className="text-sm"
                 endContent={<Icon icon="lucide:chevron-down" width={16} />}
+                aria-label="Open categories menu"
               >
                 Categories
               </Button>
@@ -104,7 +107,7 @@ export const Header = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href="#" className="w-full text-foreground">
+                  <Link href="#" className="w-full text-foreground" aria-label={`View category ${category}`}>
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -123,6 +126,7 @@ export const Header = () => {
             }}
             placeholder="Search products..."
             startContent={<Icon icon="lucide:search" className="text-default-400" width={18} />}
+            aria-label="Search products"
           />
         </NavbarItem>
 
@@ -135,7 +139,7 @@ export const Header = () => {
         </NavbarItem>
 
         <NavbarItem className="hidden sm:flex">
-          <Button isIconOnly variant="light" aria-label="User">
+          <Button isIconOnly variant="light" aria-label="User account">
             <Icon icon="lucide:user" width={24} />
           </Button>
         </NavbarItem>
@@ -143,3 +147,4 @@ export const Header = () => {
     </Navbar>
   );
 };
+

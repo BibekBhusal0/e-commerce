@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, CardBody, CardFooter, Divider, Input } from "@heroui/react";
+import { Button, Card, CardBody, CardFooter, Divider } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useCart } from "../../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,7 +17,7 @@ export const CartPage: React.FC = () => {
   if (cartItems.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <Icon icon="lucide:shopping-cart" width={48} className="mb-4 text-default-400" />
+        <Icon icon="lucide:shopping-cart" width={48} className="mb-4 text-default-400" aria-hidden={true} />
         <h2 className="mb-2 text-xl font-semibold">Your cart is empty</h2>
         <p className="mb-6 text-default-500">
           Looks like you haven't added any products to your cart yet.
@@ -91,6 +91,9 @@ export const CartPage: React.FC = () => {
                               variant="flat"
                               size="sm"
                               onPress={() => handleQuantityChange(product.id, item.quantity - 1)}
+                              aria-label={`Decrease quantity of ${product.title} to ${item.quantity - 1
+                                }`}
+                              isDisabled={item.quantity <= 1}
                             >
                               <Icon icon="lucide:minus" width={16} />
                             </Button>
@@ -98,12 +101,15 @@ export const CartPage: React.FC = () => {
                               spinTiming={{ duration: 100 }}
                               className="px-2"
                               value={item.quantity}
+                              aria-label={`Quantity of ${product.title}`}
                             />
                             <Button
                               isIconOnly
                               variant="flat"
                               size="sm"
                               onPress={() => handleQuantityChange(product.id, item.quantity + 1)}
+                              aria-label={`Increase quantity of ${product.title} to ${item.quantity + 1
+                                }`}
                             >
                               <Icon icon="lucide:plus" width={16} />
                             </Button>
@@ -115,6 +121,7 @@ export const CartPage: React.FC = () => {
                             color="danger"
                             size="sm"
                             onPress={() => removeFromCart(product.id)}
+                            aria-label={`Remove ${product.title} from cart`}
                           >
                             <Icon icon="lucide:trash-2" width={16} />
                           </Button>
@@ -130,6 +137,7 @@ export const CartPage: React.FC = () => {
                   color="danger"
                   startContent={<Icon icon="lucide:trash" width={16} />}
                   onPress={clearCart}
+                  aria-label="Clear cart"
                 >
                   Clear Cart
                 </Button>
@@ -190,18 +198,6 @@ export const CartPage: React.FC = () => {
                   <NumberFlow value={total} format={{ style: "currency", currency: "USD" }} />
                 </div>
               </div>
-
-              <div className="mt-2">
-                <Input
-                  label="Promo Code"
-                  placeholder="Enter code"
-                  endContent={
-                    <Button size="sm" variant="flat">
-                      Apply
-                    </Button>
-                  }
-                />
-              </div>
             </CardBody>
 
             <CardFooter>
@@ -209,6 +205,7 @@ export const CartPage: React.FC = () => {
                 color="primary"
                 className="w-full"
                 endContent={<Icon icon="lucide:arrow-right" width={16} />}
+                aria-label="Checkout"
               >
                 Checkout
               </Button>
@@ -217,15 +214,15 @@ export const CartPage: React.FC = () => {
 
           <div className="mt-4 text-xs text-default-500">
             <div className="mb-1 flex items-center gap-1">
-              <Icon icon="lucide:shield" width={14} />
+              <Icon icon="lucide:shield" width={14} aria-hidden={true} />
               <span>Secure checkout</span>
             </div>
             <div className="mb-1 flex items-center gap-1">
-              <Icon icon="lucide:refresh-ccw" width={14} />
+              <Icon icon="lucide:refresh-ccw" width={14} aria-hidden={true} />
               <span>30-day returns</span>
             </div>
             <div className="flex items-center gap-1">
-              <Icon icon="lucide:truck" width={14} />
+              <Icon icon="lucide:truck" width={14} aria-hidden={true} />
               <span>Free shipping on orders over $50</span>
             </div>
           </div>
@@ -234,3 +231,4 @@ export const CartPage: React.FC = () => {
     </div>
   );
 };
+

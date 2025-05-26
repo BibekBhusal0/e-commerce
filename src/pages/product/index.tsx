@@ -25,7 +25,7 @@ export const ProductPage = () => {
   if (!product || !id ) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <Icon icon="lucide:alert-circle" width={48} className="mb-4 text-danger" />
+        <Icon icon="lucide:alert-circle" width={48} className="mb-4 text-danger" aria-hidden={true}/>
         <h2 className="mb-2 text-xl font-semibold">Product Not Found</h2>
         <p className="mb-6 text-default-500">
           The product you're looking for doesn't exist or has been removed.
@@ -77,6 +77,7 @@ export const ProductPage = () => {
                     startContent={
                       tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined
                     }
+                    aria-label={tag}
                   >
                     {tag}
                   </Chip>
@@ -111,12 +112,12 @@ export const ProductPage = () => {
             </p>
 
             <div className="mb-2 flex items-center gap-2">
-              <Icon icon="lucide:check-circle" className="text-success" width={16} />
+              <Icon icon="lucide:check-circle" className="text-success" width={16} aria-hidden={true}/>
               <span className="text-sm">In stock and ready to ship</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <Icon icon="lucide:truck" className="text-default-500" width={16} />
+              <Icon icon="lucide:truck" className="text-default-500" width={16} aria-hidden={true}/>
               <span className="text-sm">Free shipping on orders over $50</span>
             </div>
           </div>
@@ -126,6 +127,7 @@ export const ProductPage = () => {
           <div className="mb-6 flex items-center gap-4">
             <div className="flex items-center">
               <Button
+                aria-label="Decrease quantity"
                 isIconOnly
                 variant="flat"
                 size="sm"
@@ -134,8 +136,9 @@ export const ProductPage = () => {
               >
                 <Icon icon="lucide:minus" width={16} />
               </Button>
-              <NumberFlow className="px-2" value={quantity} spinTiming={{ duration: 100 }} />
+              <NumberFlow className="px-2" value={quantity} spinTiming={{ duration: 100 }} aria-label="Product Quantity" />
               <Button
+                aria-label="Increase quantity"
                 isIconOnly
                 variant="flat"
                 size="sm"
@@ -150,13 +153,14 @@ export const ProductPage = () => {
               className="flex-1"
               startContent={<Icon icon="lucide:shopping-cart" width={18} />}
               onPress={handleAdd}
+              aria-label="Add to cart"
             >
               Add to Cart
             </Button>
           </div>
 
-          <Accordion>
-            <AccordionItem key="1" title="Product Details">
+          <Accordion aria-label="Product details and shipping options">
+            <AccordionItem key="1" title="Product Details" aria-label="Product Details">
               <div className="text-sm text-default-600">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel
@@ -167,7 +171,7 @@ export const ProductPage = () => {
               </div>
             </AccordionItem>
 
-            <AccordionItem key="2" title="Shipping & Returns">
+            <AccordionItem key="2" title="Shipping & Returns" aria-label="Shipping & Returns">
               <div className="text-sm text-default-600">
                 <p>
                   Free standard shipping on orders over $50. Expedited and international shipping
@@ -207,6 +211,7 @@ export const ProductPage = () => {
               icon="lucide:message-square"
               className="mx-auto mb-2 text-default-400"
               width={32}
+              aria-hidden={true}
             />
             <p className="text-default-500">No reviews yet. Be the first to review this product!</p>
           </div>
@@ -226,3 +231,4 @@ export const ProductPage = () => {
     </div>
   );
 };
+

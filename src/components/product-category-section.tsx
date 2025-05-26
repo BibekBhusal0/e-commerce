@@ -100,10 +100,10 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
         ref={scrollContainerRef}
         onScroll={checkScrollPosition}
         aria-label={`scrollable container for ${title}`}
-        orientation = 'horizontal'
-        size ={20}
+        orientation="horizontal"
+        size={20}
         hideScrollBar
-        className="flex snap-x gap-4 pb-4 "
+        className="flex snap-x gap-4 pb-4"
       >
         {products.map((product) => (
           <div key={product.id} className="min-w-[220px] max-w-[220px] snap-start">

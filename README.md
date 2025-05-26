@@ -57,7 +57,7 @@ https://github.com/user-attachments/assets/7e0ccc6e-252a-47b6-86bc-33a599ac73a4
 
 ## 🌐 Live Preview
 
-[https://github.com/BibekBhusal0/e-commerce](https://github.com/BibekBhusal0/e-commerce)
+[https://heroui-ecommerce-template.netlify.app/](https://heroui-ecommerce-template.netlify.app/)
 
 ## 📜 License
 

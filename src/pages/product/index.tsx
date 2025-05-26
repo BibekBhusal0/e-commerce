@@ -19,9 +19,10 @@ export const ProductPage = () => {
   const product = products.find((p) => p.id === id);
   useEffect(() => {
     window.scrollTo(0, 0);
+    setQuantity(1)
   }, [id]);
 
-  if (!product) {
+  if (!product || !id ) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <Icon icon="lucide:alert-circle" width={48} className="mb-4 text-danger" />
@@ -36,14 +37,17 @@ export const ProductPage = () => {
     );
   }
 
+  const handleAdd = () =>{
+              addToCart(id, quantity)
+    setQuantity(1)
+  }
+
   const relatedProducts = products.filter(
     (p) => p.category === product.category && p.id !== product.id
   );
 
   const handleQuantityChange = (value: number) => {
-    if (value >= 1) {
-      setQuantity(value);
-    }
+    if (value >= 1) setQuantity(value);
   };
 
   return (
@@ -145,7 +149,7 @@ export const ProductPage = () => {
               color="primary"
               className="flex-1"
               startContent={<Icon icon="lucide:shopping-cart" width={18} />}
-              onPress={() => addToCart(product.id)}
+              onPress={handleAdd}
             >
               Add to Cart
             </Button>

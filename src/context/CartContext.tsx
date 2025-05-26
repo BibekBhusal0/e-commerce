@@ -5,7 +5,7 @@ import { addToast } from "@heroui/react";
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (productId: string) => void;
+  addToCart: (productId: string, quantity?: number) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -16,10 +16,10 @@ interface CartContextType {
 
 export const CartContext = React.createContext<CartContextType>({
   cartItems: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  updateQuantity: () => {},
-  clearCart: () => {},
+  addToCart: () => { },
+  removeFromCart: () => { },
+  updateQuantity: () => { },
+  clearCart: () => { },
   getCartTotal: () => 0,
   getCartCount: () => 0,
   getProduct: () => undefined,
@@ -42,16 +42,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (productId: string) => {
+  const addToCart = (productId: string, quantity: number = 1) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.productId === productId);
 
       if (existingItem) {
         return prevItems.map((item) =>
-          item.productId === productId ? { ...item, quantity: item.quantity + 1 } : item
+          item.productId === productId ? { ...item, quantity: item.quantity + quantity } : item
         );
       } else {
-        return [...prevItems, { productId, quantity: 1 }];
+        return [...prevItems, { productId, quantity }];
       }
     });
 
@@ -118,3 +118,4 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const useCart = () => React.useContext(CartContext);
+

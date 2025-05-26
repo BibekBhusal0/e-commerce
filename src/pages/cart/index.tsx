@@ -11,9 +11,7 @@ export const CartPage: React.FC = () => {
     useCart();
 
   const handleQuantityChange = (productId: string, quantity: number) => {
-    if (quantity >= 1) {
-      updateQuantity(productId, quantity);
-    }
+    if (quantity >= 1) updateQuantity(productId, quantity);
   };
 
   if (cartItems.length === 0) {

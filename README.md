@@ -51,9 +51,7 @@ npm run dev
 ![Product Page](https://github.com/user-attachments/assets/e170d6d7-6a14-46bd-8faf-dbef1039143c)
 ![Cart Page](https://github.com/user-attachments/assets/4954de85-36c7-4f03-ad8a-0067c82c1db6)
 
-
 https://github.com/user-attachments/assets/7e0ccc6e-252a-47b6-86bc-33a599ac73a4
-
 
 ## 🌐 Live Preview
 

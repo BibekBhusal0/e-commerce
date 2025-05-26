@@ -170,7 +170,7 @@ export const CartPage: React.FC = () => {
           transition={{ duration: 0.3, delay: 0.2 }}
         >
           <Card>
-            <CardBody className="gap-4">
+            <CardBody className="gap-4 overflow-hidden">
               <h2 className="text-lg font-semibold">Order Summary</h2>
 
               <div className="space-y-3">

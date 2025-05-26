@@ -17,7 +17,12 @@ export const CartPage: React.FC = () => {
   if (cartItems.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <Icon icon="lucide:shopping-cart" width={48} className="mb-4 text-default-400" aria-hidden={true} />
+        <Icon
+          icon="lucide:shopping-cart"
+          width={48}
+          className="mb-4 text-default-400"
+          aria-hidden={true}
+        />
         <h2 className="mb-2 text-xl font-semibold">Your cart is empty</h2>
         <p className="mb-6 text-default-500">
           Looks like you haven't added any products to your cart yet.
@@ -91,8 +96,9 @@ export const CartPage: React.FC = () => {
                               variant="flat"
                               size="sm"
                               onPress={() => handleQuantityChange(product.id, item.quantity - 1)}
-                              aria-label={`Decrease quantity of ${product.title} to ${item.quantity - 1
-                                }`}
+                              aria-label={`Decrease quantity of ${product.title} to ${
+                                item.quantity - 1
+                              }`}
                               isDisabled={item.quantity <= 1}
                             >
                               <Icon icon="lucide:minus" width={16} />
@@ -108,8 +114,9 @@ export const CartPage: React.FC = () => {
                               variant="flat"
                               size="sm"
                               onPress={() => handleQuantityChange(product.id, item.quantity + 1)}
-                              aria-label={`Increase quantity of ${product.title} to ${item.quantity + 1
-                                }`}
+                              aria-label={`Increase quantity of ${product.title} to ${
+                                item.quantity + 1
+                              }`}
                             >
                               <Icon icon="lucide:plus" width={16} />
                             </Button>
@@ -231,4 +238,3 @@ export const CartPage: React.FC = () => {
     </div>
   );
 };
-

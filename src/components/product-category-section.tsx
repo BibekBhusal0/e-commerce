@@ -112,4 +112,3 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
     </div>
   );
 };
-

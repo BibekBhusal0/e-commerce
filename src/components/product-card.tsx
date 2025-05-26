@@ -21,7 +21,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       transition={{ duration: 0.3 }}
     >
       <Card className="size-full">
-        <Link to={`/product/${product.id}`} className="flex h-full flex-col" aria-label={`View details for ${product.title}`}>
+        <Link
+          to={`/product/${product.id}`}
+          className="flex h-full flex-col"
+          aria-label={`View details for ${product.title}`}
+        >
           <div>
             <img src={product.image} alt={product.title} className="h-48 w-full object-cover" />
             <div className="absolute left-2 top-2 flex flex-wrap gap-1">
@@ -31,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   <Chip
                     key={tag}
                     size="sm"
-                    className={cn("bg-gradient-to-r border-none text-white", tagStyle.gradient)}
+                    className={cn("border-none bg-gradient-to-r text-white", tagStyle.gradient)}
                     startContent={
                       tagStyle.icon ? <Icon icon={tagStyle.icon} width={14} /> : undefined
                     }
@@ -71,4 +75,3 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     </motion.div>
   );
 };
-

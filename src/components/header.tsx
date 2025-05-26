@@ -45,7 +45,12 @@ export const Header = () => {
                 <DropdownItem key={item.name} textValue={item.name}>
                   <Link
                     href={item.href}
-                    className={cn("w-full", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
+                    className={cn(
+                      "w-full",
+                      location.pathname === item.href
+                        ? "font-medium text-primary"
+                        : "text-foreground"
+                    )}
                     aria-label={`Navigate to ${item.name}`}
                   >
                     {item.name}
@@ -63,7 +68,11 @@ export const Header = () => {
             <>
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href="#" className="w-full text-foreground" aria-label={`View category ${category}`}>
+                  <Link
+                    href="#"
+                    className="w-full text-foreground"
+                    aria-label={`View category ${category}`}
+                  >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -85,7 +94,10 @@ export const Header = () => {
           <NavbarItem key={item.name} isActive={location.pathname === item.href}>
             <Link
               href={item.href}
-              className={cn("text-sm", location.pathname === item.href ? "font-medium text-primary" : "text-foreground")}
+              className={cn(
+                "text-sm",
+                location.pathname === item.href ? "font-medium text-primary" : "text-foreground"
+              )}
               aria-label={`Navigate to ${item.name}`}
             >
               {item.name}
@@ -107,7 +119,11 @@ export const Header = () => {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => (
                 <DropdownItem key={category} textValue={category}>
-                  <Link href="#" className="w-full text-foreground" aria-label={`View category ${category}`}>
+                  <Link
+                    href="#"
+                    className="w-full text-foreground"
+                    aria-label={`View category ${category}`}
+                  >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </DropdownItem>
@@ -132,7 +148,7 @@ export const Header = () => {
 
         <NavbarItem>
           <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
-            <Button as={Link} href='/cart' isIconOnly variant="light" aria-label="Cart">
+            <Button as={Link} href="/cart" isIconOnly variant="light" aria-label="Cart">
               <Icon icon="lucide:shopping-cart" width={24} />
             </Button>
           </Badge>
@@ -147,4 +163,3 @@ export const Header = () => {
     </Navbar>
   );
 };
-

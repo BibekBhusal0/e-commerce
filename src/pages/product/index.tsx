@@ -19,13 +19,18 @@ export const ProductPage = () => {
   const product = products.find((p) => p.id === id);
   useEffect(() => {
     window.scrollTo(0, 0);
-    setQuantity(1)
+    setQuantity(1);
   }, [id]);
 
-  if (!product || !id ) {
+  if (!product || !id) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <Icon icon="lucide:alert-circle" width={48} className="mb-4 text-danger" aria-hidden={true}/>
+        <Icon
+          icon="lucide:alert-circle"
+          width={48}
+          className="mb-4 text-danger"
+          aria-hidden={true}
+        />
         <h2 className="mb-2 text-xl font-semibold">Product Not Found</h2>
         <p className="mb-6 text-default-500">
           The product you're looking for doesn't exist or has been removed.
@@ -37,10 +42,10 @@ export const ProductPage = () => {
     );
   }
 
-  const handleAdd = () =>{
-              addToCart(id, quantity)
-    setQuantity(1)
-  }
+  const handleAdd = () => {
+    addToCart(id, quantity);
+    setQuantity(1);
+  };
 
   const relatedProducts = products.filter(
     (p) => p.category === product.category && p.id !== product.id
@@ -112,12 +117,22 @@ export const ProductPage = () => {
             </p>
 
             <div className="mb-2 flex items-center gap-2">
-              <Icon icon="lucide:check-circle" className="text-success" width={16} aria-hidden={true}/>
+              <Icon
+                icon="lucide:check-circle"
+                className="text-success"
+                width={16}
+                aria-hidden={true}
+              />
               <span className="text-sm">In stock and ready to ship</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <Icon icon="lucide:truck" className="text-default-500" width={16} aria-hidden={true}/>
+              <Icon
+                icon="lucide:truck"
+                className="text-default-500"
+                width={16}
+                aria-hidden={true}
+              />
               <span className="text-sm">Free shipping on orders over $50</span>
             </div>
           </div>
@@ -136,7 +151,12 @@ export const ProductPage = () => {
               >
                 <Icon icon="lucide:minus" width={16} />
               </Button>
-              <NumberFlow className="px-2" value={quantity} spinTiming={{ duration: 100 }} aria-label="Product Quantity" />
+              <NumberFlow
+                className="px-2"
+                value={quantity}
+                spinTiming={{ duration: 100 }}
+                aria-label="Product Quantity"
+              />
               <Button
                 aria-label="Increase quantity"
                 isIconOnly
@@ -231,4 +251,3 @@ export const ProductPage = () => {
     </div>
   );
 };
-

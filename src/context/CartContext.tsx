@@ -16,10 +16,10 @@ interface CartContextType {
 
 export const CartContext = React.createContext<CartContextType>({
   cartItems: [],
-  addToCart: () => { },
-  removeFromCart: () => { },
-  updateQuantity: () => { },
-  clearCart: () => { },
+  addToCart: () => {},
+  removeFromCart: () => {},
+  updateQuantity: () => {},
+  clearCart: () => {},
   getCartTotal: () => 0,
   getCartCount: () => 0,
   getProduct: () => undefined,
@@ -118,4 +118,3 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const useCart = () => React.useContext(CartContext);
-

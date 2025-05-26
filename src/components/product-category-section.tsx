@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@heroui/react";
+import { Button, ScrollShadow } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { ProductCard } from "./product-card";
 import { Product } from "../types";
@@ -96,19 +96,21 @@ export const ProductCategorySection: React.FC<ProductCategorySectionProps> = ({
         </div>
       </div>
 
-      <div
+      <ScrollShadow
         ref={scrollContainerRef}
-        className="flex snap-x gap-4 overflow-x-auto pb-4 scrollbar-hide"
         onScroll={checkScrollPosition}
         aria-label={`scrollable container for ${title}`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        orientation = 'horizontal'
+        size ={20}
+        hideScrollBar
+        className="flex snap-x gap-4 pb-4 "
       >
         {products.map((product) => (
           <div key={product.id} className="min-w-[220px] max-w-[220px] snap-start">
             <ProductCard product={product} />
           </div>
         ))}
-      </div>
+      </ScrollShadow>
     </div>
   );
 };

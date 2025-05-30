@@ -17,6 +17,7 @@ import {
 import { Icon } from "@iconify/react";
 import { useCart } from "../context/CartContext";
 import { navItems, categories } from "../data/mock-data";
+import NumberFlow from "@number-flow/react";
 
 export const Header = () => {
   const location = useLocation();
@@ -147,7 +148,17 @@ export const Header = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <Badge content={cartCount} color="primary" isInvisible={cartCount === 0}>
+          <Badge
+            content={<NumberFlow
+              value = {cartCount}
+              spinTiming={{ duration: 100 }}
+              className = 'text-xs'
+            />}
+            size= 'lg'
+            color="primary"
+            className = 'aspect-square rounded-full min-w-5 min-h-5 transition-all p-[1px] duration-300'
+            isInvisible={cartCount === 0}
+          >
             <Button as={Link} href="/cart" isIconOnly variant="light" aria-label="Cart">
               <Icon icon="lucide:shopping-cart" width={24} />
             </Button>

@@ -149,14 +149,12 @@ export const Header = () => {
 
         <NavbarItem>
           <Badge
-            content={<NumberFlow
-              value = {cartCount}
-              spinTiming={{ duration: 100 }}
-              className = 'text-xs'
-            />}
-            size= 'lg'
+            content={
+              <NumberFlow value={cartCount} spinTiming={{ duration: 100 }} className="text-xs" />
+            }
+            size="lg"
             color="primary"
-            className = 'aspect-square rounded-full min-w-5 min-h-5 transition-all p-[1px] duration-300'
+            className="aspect-square min-h-5 min-w-5 rounded-full p-[1px] transition-all duration-300"
             isInvisible={cartCount === 0}
           >
             <Button as={Link} href="/cart" isIconOnly variant="light" aria-label="Cart">
